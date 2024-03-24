@@ -16,6 +16,7 @@ import { FcApproval } from "react-icons/fc";
 import { CollapsIcon } from "../icons";
 import { CiChat2 } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
+import { BiListPlus, BiUserPlus } from "react-icons/bi";
 
 const Sidebar = () => {
   const [toggleCollapse, setToggleCollapse] = useState(false);
@@ -60,6 +61,48 @@ const Sidebar = () => {
       link: "/",
     },
   ];
+
+  //Brokers
+  const menuItems_b = [
+    {
+      id: 1,
+      label: "Dashboard",
+      icon: <RxDashboard size={25} />,
+      link: "/",
+    },
+    {
+      id: 2,
+      label: "Employees",
+      icon: <BiUserPlus size={25} />,
+      link: "",
+    },
+    {
+      id: 3,
+      label: "Properties",
+      icon: <BiListPlus size={25} />,
+      link: "/",
+    },
+
+    {
+      id: 4,
+      label: "Conversation",
+      icon: <CiChat2 size={25} />,
+      link: "/",
+    },
+    {
+      id: 5,
+      label: "Profile",
+      icon: <CgProfile size={25} />,
+      link: "/",
+    },
+    {
+      id: 6,
+      label: "Logout",
+      icon: <TbLogout size={25} />,
+      link: "/",
+    },
+  ];
+
   const handleItemClick = (item) => {
     setActiveItem(item.id);
   };
@@ -106,7 +149,7 @@ const Sidebar = () => {
           </button>
         </div>
         <div className="flex flex-col items-start mt-5 gap-3">
-          {menuItems.map(({ id, title, icon, children, label }) => (
+          {menuItems_b.map(({ id, title, icon, children, label }) => (
             <div key={id} className="relative">
               {!toggleCollapse && title && (
                 <div style={{ marginTop: "40px", marginLeft: "10px" }}>

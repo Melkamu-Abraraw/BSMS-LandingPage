@@ -8,10 +8,10 @@ import { BiUserPlus } from "react-icons/bi";
 import { useState } from "react";
 
 function Homepage() {
-  const [visible, setVisisble] = useState(false);
+  const [visible, setVisible] = useState(false);
 
-  const handler = () => {
-    setVisisble(!visible);
+  const toggleVisibility = () => {
+    setVisible((prevVisible) => !prevVisible);
   };
   return (
     <>
@@ -22,37 +22,34 @@ function Homepage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div className="flex ">
-          <main className="bg-gray-100 min-h-screen flex-grow ml-60">
+        <main className="bg-gray-100 min-h-screen flex-grow">
+          <div className="ml-7">
             <Header />
-            <div className="py-5 px-5">
+          </div>
+          <div className="py-5 px-0 ml-1">
               <h1
-                className="text-xl md:text-xl text-center font-bold py-2 text-gray-800"
+                className="text-xl md:text-xl text-center font-bold py-0 text-gray-800"
                 style={{ fontFamily: "initial" }}
               >
-                Job-Seekers Management Page
+                Job-Seekers Information
               </h1>
 
               <div className="flex items-center gap-3 container mx-auto flex justify-end py-2">
                 <button
-                  onClick={handler}
+                  onClick={toggleVisibility}
                   className="flex bg-indigo-400 text-white px-2 py-2 border font-bold rounded-md hover:bg-gray-200 hover:border-indigo-500 hover:text-black"
                 >
-                  Add{" "}
+                  {visible ? "Close" : "Add"}{" "}
                   <span className="px-1">
                     <BiUserPlus size={23} />
                   </span>
                 </button>
               </div>
 
-              {visible ? <EmpForm /> : <></>}
-
-              <div>
-                <EmpTable/>
-              </div>
+              {visible ? <EmpForm /> : null}
+              {!visible ? <EmpTable /> : null}
             </div>
-          </main>
-        </div>
+        </main>
       </Layout>
     </>
   );

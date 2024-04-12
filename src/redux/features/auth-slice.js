@@ -15,7 +15,6 @@ const initialStateForProfileImage = {
     baseUrl: "http://localhost:3001/api/",
   },
 };
-
 export const authSlice = createSlice({
   name: "auth",
   initialState: initialState,

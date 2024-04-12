@@ -10,16 +10,31 @@ const formReducer = (state, event) => {
     [event.target.name]: event.target.value,
   };
 };
-const formId = useSelector((state) => state.app.client.formId);
+// const EmpForm = () => {
+//   const [formData, setFormData] = useReducer(formReducer, {});
+//   const formId = useSelector((state) => state.app.client.formId);
+//   return (
+//     <div className="container mx-auto py-5">
+//       {formId
+//         ? EmpUpdate({ formId, formData, setFormData })
+//         : EmpAdd({ formData, setFormData })}
+//     </div>
+//   );
+// };
 const EmpForm = () => {
   const [formData, setFormData] = useReducer(formReducer, {});
   const formId = useSelector((state) => state.app.client.formId);
   return (
     <div className="container mx-auto py-5">
-      {formId
-        ? EmpUpdate({ formId, formData, setFormData })
-        : EmpAdd({ formData, setFormData })}
-      <EmpAdd />
+      {formId ? (
+        <EmpUpdate
+          formId={formId}
+          formData={formData}
+          setFormData={setFormData}
+        />
+      ) : (
+        <EmpAdd formData={formData} setFormData={setFormData} />
+      )}
     </div>
   );
 };

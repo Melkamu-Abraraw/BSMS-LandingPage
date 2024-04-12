@@ -1,8 +1,12 @@
 import mdconc from "@/data/empdata/empdb/mdconc";
-import { getEmp, putEmp, deleteEmp } from "@/data/empdata/empdb/EmpController";
+import {
+  getEmployee,
+  updateEmployee,
+  deleteEmployee,
+} from "@/data/empdata/controllers/EmpController";
 
-const handler = (req, res) => {
-  mdconc().catch(() =>
+export default async function handler(req, res) {
+  await mdconc().catch(() =>
     res.status(405).json({ error: "Error in the connection" })
   );
 
@@ -10,18 +14,17 @@ const handler = (req, res) => {
 
   switch (method) {
     case "GET":
-      getEmp(req, res);
+      getEmployee(req, res);
       break;
     case "PUT":
-      putEmp(req, res);
+      updateEmployee(req, res);
       break;
     case "DELETE":
-      deleteEmp(req, res);
+      deleteEmployee(req, res);
       break;
 
     default:
       res.setHeader("Allow", ["GET", "POST", "PUT", "DELETE"]);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
-};
-export default handler;
+}

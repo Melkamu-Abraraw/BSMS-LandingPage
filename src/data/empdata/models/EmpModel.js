@@ -2,7 +2,7 @@ import { Schema, models, model } from "mongoose";
 
 const empSchema = new Schema(
   {
-    EmpId: { type: String },
+    EmpAvator: { type: String },
     FullName: { type: String, required: [true, "FullName is required"] },
     Age: { type: String, required: [true, "Age is required"] },
     Gender: { type: String, required: [true, "Gender is required"] },
@@ -10,7 +10,7 @@ const empSchema = new Schema(
     Address: { type: String, required: [true, "Address is required"] },
     JobType: { type: String, required: [true, "JobType is required"] },
     Experience: { type: String, required: [true, "Experience is required"] },
-    RelativeId: { type: String },
+    RelAvator: { type: String },
     RelativeName: {
       type: String,
       required: [true, "RelativeName is required"],
@@ -25,7 +25,7 @@ const empSchema = new Schema(
     },
     Relationship: {
       type: String,
-      required: [true, "Relationshipe is required"],
+      required: [true, "Relationship is required"],
     },
   },
   { timestamps: true }

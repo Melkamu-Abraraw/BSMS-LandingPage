@@ -82,7 +82,12 @@ const Sidebar = () => {
       icon: <BiListPlus size={25} />,
       link: "/",
     },
-
+    {
+      id: 5,
+      label: "Inspection",
+      icon: <BiListPlus size={25} />,
+      link: "/",
+    },
     {
       id: 4,
       label: "Conversation",
